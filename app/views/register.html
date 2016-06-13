@@ -1,0 +1,66 @@
+<div class="ngdialog-message">
+  <div>
+    <h3>register</h3>
+  </div>
+  <div>&nbsp;</div>
+  <div>
+    <form ng-submit="doRegister()" role="form" name="registerForm" novalidate>
+      <div class="form-group">
+        <label class="sr-only" for="username">username</label>
+        <input type="text"
+               class="form-control input-sm"
+               id="username"
+               name="username"
+               placeholder="username"
+               ng-model="registration.username"
+               duplicate="usernames"
+               ng-minlength="3"
+               ng-maxlength="20"
+               required />
+        <div ng-messages="registerForm.username.$error" role="alert" class="errorText">
+          <div ng-message="duplicate">duplicate</div>
+          <div ng-message="minlength">at least 3 chars long</div>
+          <div ng-message="maxlength">no more than 20 chars</div>
+          <div ng-message="required" ng-show="!registerForm.username.$pristine">username required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="password">password</label>
+        <input type="password"
+               class="form-control input-sm"
+               id="password"
+               name="password"
+               placeholder="password"
+               ng-model="registration.password"
+               ng-minlength="3"
+               ng-maxlength="20"
+               required />
+        <div ng-messages="registerForm.password.$error" role="alert" class="errorText">
+          <div ng-message="minlength">at least 3 chars long</div>
+          <div ng-message="maxlength">no more than 20 chars</div>
+          <div ng-message="required" ng-show="!registerForm.password.$pristine">password required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="email">email</label>
+        <input type="email"
+               class="form-control input-sm"
+               id="email"
+               name="email"
+               placeholder="email"
+               ng-model="registration.email"
+               required />
+        <div ng-messages="registerForm.email.$error" role="alert" class="errorText">
+          <div ng-message="required" ng-show="!registerForm.email.$pristine">email required</div>
+        </div>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="registration.rememberMe" name="rememberMe"> remember me
+        </label>
+      </div>
+      <button type="submit" class="btn btn-info btn-sm" ng-disabled="registerForm.$invalid">register</button>
+      <button type="button" class="btn btn-default btn-sm" ng-click="closeThisDialog('cancel')">cancel</button>
+    </form>
+  </div>
+</div>

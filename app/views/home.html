@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-4 well pull-right" id="random-word" ng-if="randomWord">
+        <h4>random word</h4>
+        <h3><a ui-sref="app.word({word: randomWord.word.word})">{{randomWord.word.word}}</a></h3>
+        <p>{{randomWord.wordDef}}</p>
+        <i>{{randomWord.example}}</i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-offset-2">
+        <h1 id="logo">dribbledrobble</h1>
+        <h2 id="slogan">{{slogan}}</h2>
+      </div>
+    </div>
+  </div>
+</div>

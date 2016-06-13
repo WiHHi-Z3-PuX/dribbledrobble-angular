@@ -1,0 +1,25 @@
+<div class="ngdialog-message">
+  <div>
+    <h3>login</h3>
+  </div>
+  <div>&nbsp;</div>
+  <div>
+    <form ng-submit="doLogin()" role="form" name="loginForm">
+      <div class="form-group">
+        <label class="sr-only" for="username">username</label>
+        <input type="text" class="form-control input-sm" id="username" name="username" placeholder="username" ng-model="loginData.username" required />
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="password">password</label>
+        <input type="password" class="form-control input-sm" id="password" name="password" placeholder="password" ng-model="loginData.password" required />
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="rememberMe"> remember me
+        </label>
+      </div>
+      <button type="submit" class="btn btn-info btn-sm" ng-disabled="loginForm.$invalid">sign in</button>
+      <button type="button" class="btn btn-default btn-sm" ng-click="closeThisDialog('cancel')">cancel</button> &nbsp; &nbsp;
+    </form>
+  </div>
+</div>

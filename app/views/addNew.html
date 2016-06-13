@@ -1,0 +1,63 @@
+<div class="ngdialog-message">
+  <div class="">
+    <h3>add new word definition</h3>
+  </div>
+  <div class="">&nbsp;</div>
+  <div class="">
+    <form ng-submit="addNew()" role="form" name="addNewForm">
+      <div class="form-group">
+        <label class="sr-only" for="word">word</label>
+        <input type="text"
+               class="form-control input-sm"
+               id="word"
+               name="word"
+               placeholder="word"
+               ng-model="new.word"
+               ng-minlength="2"
+               ng-maxlength="20"
+               required />
+        <div ng-messages="addNewForm.word.$error" role="alert" class="errorText">
+          <div ng-message="minlength">at least 2 chars long</div>
+          <div ng-message="maxlength">no more than 20 chars</div>
+          <div ng-message="required" ng-show="!addNewForm.word.$pristine">word required</div>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : addNewForm.worddef.$error.required && !addNewForm.worddef.$pristine }">
+        <label class="sr-only" for="worddef">definition</label>
+        <textarea class="form-control"
+                  rows="5" id="worddef"
+                  name="worddef"
+                  placeholder="word definition"
+                  ng-model="new.wordDef"
+                  ng-minlength="30"
+                  ng-maxlength="500"
+                  required></textarea>
+        <div ng-messages="addNewForm.worddef.$error" role="alert" class="errorText">
+          <div ng-message="minlength">at least 30 chars long</div>
+          <div ng-message="maxlength">no more than 500 chars</div>
+          <div ng-message="required" ng-show="!addNewForm.worddef.$pristine">worddef required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="example">example</label>
+        <textarea class="form-control"
+                  rows="4" id="example"
+                  name="example"
+                  placeholder="example"
+                  ng-model="new.example"
+                  ng-maxlength="300"></textarea>
+        <div ng-messages="addNewForm.example.$error" role="alert" class="errorText">
+          <div ng-message="maxlength">no more than 300 chars</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="newTags"></label>
+        <tags-input ng-model="newTags" id="newTags" name="newTags" min-length="2" max-length="20" placeholder="add new tags">
+          <auto-complete source="loadTagsAutocomplete($query)"></auto-complete>
+        </tags-input>
+      </div>
+      <button type="submit" class="btn btn-info btn-sm" ng-disabled="addNewForm.$invalid">submit</button>
+      <button type="button" class="btn btn-default btn-sm" ng-click="closeThisDialog('Cancel')">cancel</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="sm-12">
+      <button class="btn btn-default" ng-click="sorting = 'tag'">sort by tag name</button>
+      <button class="btn btn-default" ng-click="sorting = 'nused'">sort by # used asc</button>
+      <button class="btn btn-default" ng-click="sorting = '-nused'">sort by # used desc</button>
+      <p></p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>tag</th>
+                <th># used</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="t in tags | orderBy: sorting">
+              <td><a ui-sref="app.worddefs({tag: t.tag})">{{t.tag}}</a></td>
+              <td>{{t.nused}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="queryString">search</label>
+            <input type="text" class="form-control" id="queryString" ng-model="queryString">
+          </div>
+        </div>
+      </div>
+
+      <p></p>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <button class="btn btn-default" ng-click="sorting = 'word'">sort alphabetically</button>
+          <button class="btn btn-default" ng-click="sorting = 'nused'">sort by # used asc</button>
+          <button class="btn btn-default" ng-click="sorting = '-nused'">sort by # used desc</button>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>word</th>
+                <th># used</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="wordObj in words | orderBy: sorting | filter: queryString">
+              <td><a ui-sref="app.word({word: wordObj.word})">{{wordObj.word}}</a></td>
+              <td>{{wordObj.nused}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

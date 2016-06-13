@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h2>word: {{defs[0].word.word}}</h2>
+        </div>
+      </div>
+      <div ng-repeat="def in defs">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-xs-9">
+              {{def.wordDef}}
+              <br>
+              <i class="example">{{def.example}}</i>
+            </div>
+            <div class="col-xs-3">
+              <div ng-if="loggedIn">
+                <button type="button" class="btn btn-success btn-xs" ng-click="upvote(def._id, $index)">upvote</button>&nbsp;
+                <button type="button" class="btn btn-danger btn-xs" ng-click="downvote(def._id, $index)">downvote</button>
+              </div>
+              <h4>rating: {{def.rating}}</h4>
+              tags:
+              <span ng-repeat="tag in def.tags">
+                <a ui-sref="app.worddefs({tag: tag})">{{tag}}</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!--<div class="col-sm-3 col-sm-offset-1">-->
+      <!--<div class="panel panel-default">-->
+        <!--<div class="panel-heading">-->
+          <!--similar words-->
+        <!--</div>-->
+        <!--<div class="panel-body">-->
+          <!--<ul class="list-group">-->
+            <!--<li class="list-group-item" ng-repeat="sim in wordObject.similar">-->
+              <!--{{sim}}-->
+            <!--</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>
